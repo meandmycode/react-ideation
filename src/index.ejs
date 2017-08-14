@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<% for (var chunk in htmlWebpackPlugin.files.css) { %>
+		<link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css[chunk] %>">
+	<% } %>
+	<title>Ideation.app</title>
+	<meta name="viewport" content="width=device-width">
+</head>
+<body>
+    <div data-app-root></div>
+	<% for (var item of htmlWebpackPlugin.files.js) { %>
+		<script src="<%= item %>"></script>
+    <% } %>
+</body>
+</html>
