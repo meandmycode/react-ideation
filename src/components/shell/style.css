@@ -1,0 +1,42 @@
+.host {
+    font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: linear-gradient(135deg, #f4f4f4, #f1f5f4);
+    color: #2e3a4a;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    padding: 20px;
+}
+
+.header {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 2px solid;
+    border-image: linear-gradient(to left, #abe2e2, #94b7fb, #f9cffd, #a7c5e3) 1;
+}
+
+.heading {
+    font-weight: bold;
+    font-size: 24px;
+    letter-spacing: 10px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.commands {
+    margin-left: auto;
+}
+
+.view {
+    flex: auto;
+    margin-top: 20px;
+}
+
+@media (min-width: 700px) {
+
+    .host {
+        padding: 50px;
+    }
+}
