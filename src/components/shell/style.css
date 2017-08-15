@@ -3,6 +3,7 @@
     background: linear-gradient(135deg, #f4f4f4, #f1f5f4);
     color: #2e3a4a;
     height: 100%;
+    box-sizing: border-box;
     display: flex;
     flex-flow: column;
     padding: 20px;
