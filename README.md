@@ -27,3 +27,7 @@ _In example_ `npx cross-env API_BASE_URL=https://my.api`
 To lint the source code run `npm run lint`, this will report any linting issues, to unit test the source code run `npm run unit`, this will report any unit test failures and source coverage.
 
 **To run all tests run `npm test`**
+
+## Spoilers
+
+![image](https://user-images.githubusercontent.com/153373/29312449-43951f5e-81ad-11e7-9b0f-c6c1cbc76ee5.png)
