@@ -20,3 +20,9 @@ html, body, [data-app-root] {
     margin: 0;
     height: 100%;
 }
+
+html {
+    font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: #f4f4f4;
+    color: #2e3a4a;
+}
