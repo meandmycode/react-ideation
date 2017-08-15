@@ -3,19 +3,21 @@ import { shallow } from 'enzyme';
 
 import Filterbar from './';
 
+const ChildComponent = () => null;
+
 test('Can render a collection of entities', () => {
 
     // act
     const wrapper = shallow(
         <Filterbar>
-            <div />
-            <div />
-            <div />
-            <div />
+            <ChildComponent />
+            <ChildComponent />
+            <ChildComponent />
+            <ChildComponent />
         </Filterbar>,
     );
 
     // assert
-    expect(wrapper.find('div').length).toBe(5);
+    expect(wrapper.find(ChildComponent).length).toBe(4);
 
 });
