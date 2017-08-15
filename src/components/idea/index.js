@@ -7,6 +7,7 @@ import styles from './style.css';
 
 const MAX_TITLE_LENGTH = 18;
 const MAX_BODY_LENGTH = 140;
+const REMAINING_TRIGGER_SIZE = 15;
 
 export default class Idea extends React.PureComponent {
 
@@ -73,7 +74,8 @@ export default class Idea extends React.PureComponent {
                     <div
                         name='counter'
                         className={styles.remainingCounter}
-                        data-overspill={0 > remaining ? '' : null}>
+                        data-overspill={0 > remaining ? '' : null}
+                        hidden={remaining > REMAINING_TRIGGER_SIZE}>
                         {remaining}
                     </div>
                 </div>
