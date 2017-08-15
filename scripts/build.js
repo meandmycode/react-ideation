@@ -10,6 +10,7 @@ const args = minimist(process.argv.slice(2));
 const outputPath = args['out-dir'];
 
 const appConfig = {
+    api: process.env.API_BASE_URL,
 };
 
 const config = configure({ production: true, outputPath, appConfig });
