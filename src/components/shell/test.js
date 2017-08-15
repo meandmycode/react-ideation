@@ -20,7 +20,6 @@ test('Can render the shell', () => {
 test('Invokes onCreateIdea when clicking the create button', () => {
 
     // arrange
-
     const onCreateIdea = sinon.spy();
 
     // act

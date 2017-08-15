@@ -8,7 +8,6 @@ import asyncMiddleware from './async-middleware';
 test('Dispatches a successful async sequence for a resolved promise', async () => {
 
     // arrange
-
     const middleware = [
         thunk,
         asyncMiddleware,
@@ -36,7 +35,6 @@ test('Dispatches a successful async sequence for a resolved promise', async () =
 test('Dispatches a failing async sequence for a rejected promise', async () => {
 
     // arrange
-
     const middleware = [
         thunk,
         asyncMiddleware,

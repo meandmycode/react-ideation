@@ -37,7 +37,6 @@ test('Respects an overriden tab index', () => {
 test('Invokes onClick when clicking', () => {
 
     // arrange
-
     const onClick = sinon.spy();
 
     // act
