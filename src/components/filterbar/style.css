@@ -1,0 +1,11 @@
+.host {
+    justify-content: flex-end;
+}
+
+.host:not([hidden]) {
+    display: flex;
+}
+
+.filter + .filter {
+    margin-left: 10px;
+}

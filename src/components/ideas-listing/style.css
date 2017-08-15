@@ -1,0 +1,21 @@
+.host {
+    --item-size: 150px;
+    --item-spacing: 10px;
+    margin-top: 10px; /* TODO: remove */
+}
+
+.ideas {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    /* we use the negative margins as it is the cleanest way to get gutters
+     * between grid items, whilst avoiding needing many media queries,
+     * whilst retaining a sane encapsulation */
+    margin-left: calc(var(--item-spacing) * -1);
+    margin-top: calc(var(--item-spacing) * -1);
+}
+
+.item {
+    margin-left: var(--item-spacing);
+    margin-top: var(--item-spacing);
+}

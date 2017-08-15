@@ -1,0 +1,79 @@
+{
+  "name": "ideation-app",
+  "version": "1.0.0",
+  "description": "Great minds discuss ideas",
+  "keywords": [
+    "preact",
+    "ideas"
+  ],
+  "maintainers": [
+    "Stephen Taylor <meandmycode@gmail.com> (meandmycode.com)"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "engines": {
+    "node": "^8.3.0",
+    "npm": "^5.3.0"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "moduleNameMapper": {
+      "\\.css$": "identity-obj-proxy"
+    },
+    "unmockedModulePathPatterns": [
+      "node_modules/react/",
+      "node_modules/enzyme/"
+    ]
+  },
+  "scripts": {
+    "debug": "npx babel-node scripts/dev-server",
+    "prebuild": "npx rimraf dist",
+    "build": "npx babel-node scripts/build --out-dir dist",
+    "test": "npm run lint && npm run unit",
+    "lint": "npx eslint .",
+    "unit": "npx jest"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-localstorage": "^0.4.1",
+    "redux-promise": "^0.5.3",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-jest": "^20.0.3",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "babili-webpack-plugin": "^0.1.2",
+    "css-loader": "^0.28.4",
+    "enzyme": "^2.9.1",
+    "eslint": "^4.4.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-react": "^7.2.0",
+    "express": "^4.15.4",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.30.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^20.0.4",
+    "json-server": "^0.12.0",
+    "jsonschema": "^1.1.1",
+    "minimist": "^1.2.0",
+    "optimize-css-assets-webpack-plugin": "^3.0.0",
+    "react-test-renderer": "^15.6.1",
+    "redux-mock-store": "^1.2.3",
+    "rimraf": "^2.6.1",
+    "sinon": "^3.2.0",
+    "webpack": "^3.5.3",
+    "webpack-dev-middleware": "^1.12.0"
+  }
+}
