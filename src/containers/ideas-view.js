@@ -48,7 +48,7 @@ export class IdeasView extends React.Component {
             <IdeasListing>
                 {sorted.map(entity => (
                     <Idea
-                        key={entity.ephemeral}
+                        key={entity.trackingKey}
                         idea={entity.item}
                         issue={entity.error}
                         autofocus={entity.key == null}
