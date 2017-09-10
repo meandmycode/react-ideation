@@ -1,5 +1,4 @@
 import configureStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
 
 import { STATUS_PENDING, STATUS_SUCCESS, STATUS_FAILURE } from '../constants/async-states';
 
@@ -9,7 +8,6 @@ test('Dispatches a successful async sequence for a resolved promise', async () =
 
     // arrange
     const middleware = [
-        thunk,
         asyncMiddleware,
     ];
 
@@ -36,7 +34,6 @@ test('Dispatches a failing async sequence for a rejected promise', async () => {
 
     // arrange
     const middleware = [
-        thunk,
         asyncMiddleware,
     ];
 
