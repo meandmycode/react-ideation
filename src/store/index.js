@@ -1,13 +1,13 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
 
 import async from './async-middleware';
+import dependencies from './depends-middleware';
 import reducer from '../reducer';
 
 export default (deps, enhancers) => {
 
     const middleware = [
-        thunk.withExtraArgument(deps),
+        dependencies(deps),
         async,
     ];
 

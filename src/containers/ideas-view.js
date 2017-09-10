@@ -18,18 +18,22 @@ const comparers = new Map([
     [SORT_FIELD_TITLE, titleComparer],
 ]);
 
-const mapStateToProps = ({ ideas, ideasView }) => ({ ideas, ideasView });
+const mapStateToProps = ({ ideas, ideasView: { sortType, sortDescending } }) => ({
+    ideas,
+    sortType,
+    sortDescending,
+});
 
 const mapDispatchToProps = ({
     onList: ideaActions.list,
-    onUpsert: ideaActions.upsert,
+    onUpdate: ideaActions.update,
     onRemove: ideaActions.remove,
 });
 
 export class IdeasView extends React.Component {
 
-    handleChanging = entity => idea => this.props.onUpsert(idea, entity)
-    handleChanged = entity => idea => this.props.onUpsert(idea, entity, true)
+    handleChanging = entity => idea => this.props.onUpdate(idea, entity)
+    handleChanged = entity => idea => this.props.onUpdate(idea, entity, true)
     handleRemoved = entity => () => this.props.onRemove(entity, true)
 
     componentDidMount() {
@@ -38,8 +42,7 @@ export class IdeasView extends React.Component {
 
     render() {
 
-        const { ideas, ideasView } = this.props;
-        const { sortType, sortDescending } = ideasView;
+        const { ideas, sortType, sortDescending } = this.props;
 
         const comparer = comparers.get(sortType);
         const sorted = ideas.slice(0).sort(sortDescending ? invertComparer(comparer) : comparer);
@@ -48,7 +51,7 @@ export class IdeasView extends React.Component {
             <IdeasListing>
                 {sorted.map(entity => (
                     <Idea
-                        key={entity.ephemeral}
+                        key={entity.trackingKey}
                         idea={entity.item}
                         issue={entity.error}
                         autofocus={entity.key == null}

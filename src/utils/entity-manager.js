@@ -19,8 +19,6 @@ const createMap = (items, keySelector, valueSelector) => {
 
 };
 
-const createRandomKey = () => Math.random().toString(16);
-
 export default class EntityManager {
 
     constructor({ keySelector, dateSelector } = {}) {
@@ -40,7 +38,7 @@ export default class EntityManager {
                 const date = this.dateSelector(item);
                 const persistent = true;
                 const busy = false;
-                const ephemeral = createRandomKey();
+                const trackingKey = key;
 
                 const existingEntity = keyMap.get(key);
 
@@ -48,7 +46,7 @@ export default class EntityManager {
                     return entities;
                 }
 
-                const newEntity = { item, key, date, persistent, busy, ephemeral };
+                const newEntity = { item, trackingKey, key, date, persistent, busy };
 
                 return [...entities, newEntity];
 
@@ -97,9 +95,9 @@ export default class EntityManager {
             }
 
             const date = new Date();
-            const ephemeral = createRandomKey();
+            const trackingKey = action.trackingKey;
 
-            const newEntity = { item, key, date, flushing, busy, ephemeral, error };
+            const newEntity = { item, trackingKey, key, date, flushing, busy, error };
 
             return [...entities, newEntity];
 
@@ -108,7 +106,7 @@ export default class EntityManager {
         // otherwise this is an update to an already tracked entity
         return entities.map(entity => {
 
-            if (entity.ephemeral !== action.entity.ephemeral) return entity;
+            if (entity.trackingKey !== action.entity.trackingKey) return entity;
 
             const date = this.dateSelector(item);
 
@@ -125,7 +123,7 @@ export default class EntityManager {
 
         return entities.reduce((entities, entity) => {
 
-            if (entity.ephemeral !== action.entity.ephemeral) return [...entities, entity];
+            if (entity.trackingKey !== action.entity.trackingKey) return [...entities, entity];
 
             if (action.status === STATUS_SUCCESS) return entities;
 

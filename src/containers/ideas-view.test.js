@@ -11,11 +11,8 @@ test('Invokes onList when mounting', () => {
     const onList = sinon.spy();
 
     const ideas = [];
-    const ideasView = {
-        sorter: {},
-    };
 
-    const props = { ideas, ideasView, onList };
+    const props = { ideas, onList };
 
     // act
     mount(<IdeasView {...props} />);
@@ -25,22 +22,18 @@ test('Invokes onList when mounting', () => {
 
 });
 
-test('Invokes onUpsert with the change, entity and without flush when a child idea is changing', () => {
+test('Invokes onUpdate with the change, entity and without flush when a child idea is changing', () => {
 
     // arrange
-    const onUpsert = sinon.spy();
+    const onUpdate = sinon.spy();
 
     const entity = {
-        ephemeral: 1,
+        trackingKey: 1,
     };
 
     const ideas = [entity];
 
-    const ideasView = {
-        sorter: {},
-    };
-
-    const props = { ideas, ideasView, onUpsert };
+    const props = { ideas, onUpdate };
 
     const change = {};
 
@@ -50,26 +43,22 @@ test('Invokes onUpsert with the change, entity and without flush when a child id
     wrapper.find(Idea).props().onChanging(change);
 
     // assert
-    expect(onUpsert.args).toEqual([[change, entity]]);
+    expect(onUpdate.args).toEqual([[change, entity]]);
 
 });
 
-test('Invokes onUpsert with the change, entity and flush when a child idea has changed', () => {
+test('Invokes onUpdate with the change, entity and flush when a child idea has changed', () => {
 
     // arrange
-    const onUpsert = sinon.spy();
+    const onUpdate = sinon.spy();
 
     const entity = {
-        ephemeral: 1,
+        trackingKey: 1,
     };
 
     const ideas = [entity];
 
-    const ideasView = {
-        sorter: {},
-    };
-
-    const props = { ideas, ideasView, onUpsert };
+    const props = { ideas, onUpdate };
 
     const change = {};
 
@@ -79,7 +68,7 @@ test('Invokes onUpsert with the change, entity and flush when a child idea has c
     wrapper.find(Idea).props().onChanged(change);
 
     // assert
-    expect(onUpsert.args).toEqual([[change, entity, true]]);
+    expect(onUpdate.args).toEqual([[change, entity, true]]);
 
 });
 
@@ -89,16 +78,12 @@ test('Invokes onRemove with entity and flush when a child idea is removed', () =
     const onRemove = sinon.spy();
 
     const entity = {
-        ephemeral: 1,
+        trackingKey: 1,
     };
 
     const ideas = [entity];
 
-    const ideasView = {
-        sorter: {},
-    };
-
-    const props = { ideas, ideasView, onRemove };
+    const props = { ideas, onRemove };
 
     // act
     const wrapper = shallow(<IdeasView {...props} />);

@@ -1,6 +1,6 @@
 import configureStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
 import sinon from 'sinon';
+import dependencies from '../store/depends-middleware';
 
 import { LIST_IDEAS, UPSERT_IDEA, REMOVE_IDEA } from '../constants/action-types';
 
@@ -9,7 +9,7 @@ import * as ideaActions from './ideas';
 const createMockStore = (deps = {}) => {
 
     const middleware = [
-        thunk.withExtraArgument(deps),
+        dependencies(deps),
     ];
 
     const mockStore = configureStore(middleware);
@@ -59,7 +59,7 @@ test('Invokes `ideasService.list` when invoking the list action', () => {
 
 });
 
-test('Dispatches an upsert action correctly for a non-flushing upsert', () => {
+test('Dispatches an upsert action correctly for a non-flushing update', () => {
 
     // arrange
     const item = {};
@@ -68,7 +68,7 @@ test('Dispatches an upsert action correctly for a non-flushing upsert', () => {
     const store = createMockStore();
 
     // act
-    store.dispatch(ideaActions.upsert(item, entity));
+    store.dispatch(ideaActions.update(item, entity));
 
     // assert
     expect(store.getActions()).toEqual([
@@ -77,7 +77,7 @@ test('Dispatches an upsert action correctly for a non-flushing upsert', () => {
 
 });
 
-test('Invokes `ideasService.create` when invoking the upsert action when flushing and no entity reference', () => {
+test('Invokes `ideasService.create` when invoking the create action when flushing', () => {
 
     // arrange
     const create = sinon.spy();
@@ -91,14 +91,14 @@ test('Invokes `ideasService.create` when invoking the upsert action when flushin
     const item = {};
 
     // act
-    store.dispatch(ideaActions.upsert(item, null, true));
+    store.dispatch(ideaActions.create(item, null, true));
 
     // assert
     expect(create.args).toEqual([[item]]);
 
 });
 
-test('Invokes `ideasService.update` when invoking the upsert action when flushing with an entity reference', () => {
+test('Invokes `ideasService.update` when invoking the update action when flushing', () => {
 
     // arrange
     const update = sinon.spy();
@@ -114,7 +114,7 @@ test('Invokes `ideasService.update` when invoking the upsert action when flushin
     const entity = { key };
 
     // act
-    store.dispatch(ideaActions.upsert(item, entity, true));
+    store.dispatch(ideaActions.update(item, entity, true));
 
     // assert
     expect(update.args).toEqual([[key, item]]);
