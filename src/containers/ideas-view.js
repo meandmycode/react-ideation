@@ -22,14 +22,14 @@ const mapStateToProps = ({ ideas, ideasView }) => ({ ideas, ideasView });
 
 const mapDispatchToProps = ({
     onList: ideaActions.list,
-    onUpsert: ideaActions.upsert,
+    onUpdate: ideaActions.update,
     onRemove: ideaActions.remove,
 });
 
 export class IdeasView extends React.Component {
 
-    handleChanging = entity => idea => this.props.onUpsert(idea, entity)
-    handleChanged = entity => idea => this.props.onUpsert(idea, entity, true)
+    handleChanging = entity => idea => this.props.onUpdate(idea, entity)
+    handleChanged = entity => idea => this.props.onUpdate(idea, entity, true)
     handleRemoved = entity => () => this.props.onRemove(entity, true)
 
     componentDidMount() {
