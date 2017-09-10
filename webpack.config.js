@@ -53,22 +53,6 @@ export default ({ production, coverage, outputPath, appConfig } = {}) => {
         },
     ];
 
-    // const pwaManifest = new WebpackPwaManifest({
-    //     name: 'Ultra rare youtube app',
-    //     short_name: 'PreactTube',
-    //     description: 'The rarest of youtube apps',
-    //     background_color: '#eee',
-    //     theme_color: '#673ab8',
-    //     display: 'standalone',
-    //     start_url: '/',
-    //     icons: [{
-    //         src: path.resolve('meta/icon.png'),
-    //         sizes: [96, 128, 192, 256, 384, 512],
-    //     }],
-
-    //     inject: false,
-    // });
-
     const plugins = [
 
         new DefinePlugin({
