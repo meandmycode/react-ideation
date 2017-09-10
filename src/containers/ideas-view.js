@@ -18,7 +18,11 @@ const comparers = new Map([
     [SORT_FIELD_TITLE, titleComparer],
 ]);
 
-const mapStateToProps = ({ ideas, ideasView }) => ({ ideas, ideasView });
+const mapStateToProps = ({ ideas, ideasView: { sortType, sortDescending } }) => ({
+    ideas,
+    sortType,
+    sortDescending,
+});
 
 const mapDispatchToProps = ({
     onList: ideaActions.list,
@@ -38,8 +42,7 @@ export class IdeasView extends React.Component {
 
     render() {
 
-        const { ideas, ideasView } = this.props;
-        const { sortType, sortDescending } = ideasView;
+        const { ideas, sortType, sortDescending } = this.props;
 
         const comparer = comparers.get(sortType);
         const sorted = ideas.slice(0).sort(sortDescending ? invertComparer(comparer) : comparer);
