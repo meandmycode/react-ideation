@@ -7,17 +7,19 @@ import * as ideaViewActions from '../actions/ideas-view';
 import IdeasView from './ideas-view';
 import Shell from '../components/shell';
 
+const createRandomKey = () => Math.random().toString(16);
+
 const mapStateToProps = ({ ideasView }) => ({ ideasView });
 
 const mapDispatchToProps = ({
-    onUpsert: ideaActions.upsert,
+    onCreate: ideaActions.create,
     onSetSortType: ideaViewActions.setSortType,
     onSetSortDescending: ideaViewActions.setSortDescending,
 });
 
 class App extends React.Component {
 
-    handleCreate = () => this.props.onUpsert({ title: '' }, null, true) // TODO: remove empty title
+    handleCreate = () => this.props.onCreate({ title: '' }, createRandomKey(), true) // TODO: remove empty title
 
     render() {
 
